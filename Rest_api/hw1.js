@@ -80,10 +80,6 @@ app.delete('/del_data',(req,res) => {
     res.status(400).send("Error");
 })
 
-
-
-
-
 app.listen(3000 , () => {
     console.log('Listening on port: 3000');
 });
