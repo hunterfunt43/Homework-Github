@@ -151,7 +151,7 @@ app.put('/Update_data', (req, res) => {
 
 })
 
-app.delete('/Delete_data', (req, res) => {
+app.delete('/Remove_data', (req, res) => {
     if (!req.body.id) {
         return res.status(400).send("Error");
     }
