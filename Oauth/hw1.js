@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next)=> {
-    if(req.path == "/login") return next()
+    if(req.path === "/login") return next()
 
     const auth = req.headers.authorization
     if(!auth) return res.json({msg: "Error Unauthorize"})
@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
     if(!username || !password) 
     return res.status(400).json({msg: "fail"})
 
-    if(username != "username" || password != "pass0000") 
+    if(username !== "username" || password !== "pass0000")
     return res.status(400).json({msg: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"})
 
     const token = jsonwebtoken.sign({
@@ -110,7 +110,7 @@ app.post('/Insert_data', (req, res) => {
             console.log(err)
 
             if (err) {
-                if (err.code == "ER_DUP_ENTRY") return res.status(400).json({ msg: "Error, Duplicate Data" })
+                if (err.code === "ER_DUP_ENTRY") return res.status(400).json({ msg: "Error, Duplicate Data" })
                 return res.status(400).json({ msg: "Error, Unknown Error" })
             }
             res.json({ msg: "ok" })
@@ -141,10 +141,10 @@ app.put('/Update_data', (req, res) => {
         console.log(err)
 
         if (err) {
-            if (err.code == "ER_DUP_ENTRY") return res.status(400).json({ msg: "Error, Duplicate Data" })
+            if (err.code === "ER_DUP_ENTRY") return res.status(400).json({ msg: "Error, Duplicate Data" })
             return res.status(400).json({ msg: "Error, Unknown Error" })
         }
-        if (result.affectedRows == 0) return res.status(400).json({ msg: "Error, Employee Not Found" })
+        if (result.affectedRows === 0) return res.status(400).json({ msg: "Error, Employee Not Found" })
         res.json({ msg: "ok" })
 
     })
@@ -166,7 +166,7 @@ app.delete('/Remove_data', (req, res) => {
         if (err) {
             return res.status(400).json({ msg: "Error, Unknown Error" })
         }
-        if (result.affectedRows == 0) return res.status(400).json({ msg: "Error, Employee Not Found" })
+        if (result.affectedRows === 0) return res.status(400).json({ msg: "Error, Employee Not Found" })
         res.json({ msg: "ok" })
 
     })
