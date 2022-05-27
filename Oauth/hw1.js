@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
         token: token})
 })
 
-app.get('/Data', (req, res) => {
+app.get('/data', (req, res) => {
 
     const sql = "SELECT * FROM employee"
 
@@ -73,7 +73,7 @@ app.get('/Data', (req, res) => {
 
 })
 
-app.post('/Insert_data', (req, res) => {
+app.post('/insert_data', (req, res) => {
 
     const emp_data = {
         fname: req.body.fname,
@@ -120,7 +120,7 @@ app.post('/Insert_data', (req, res) => {
     console.log(emp_data)
 })
 
-app.put('/Update_data', (req, res) => {
+app.put('/update_data', (req, res) => {
     if (!req.body.id ||
         !req.body.tel ||
         !req.body.email ||
@@ -151,7 +151,7 @@ app.put('/Update_data', (req, res) => {
 
 })
 
-app.delete('/Remove_data', (req, res) => {
+app.delete('/remove_data', (req, res) => {
     if (!req.body.id) {
         return res.status(400).send("Error");
     }
